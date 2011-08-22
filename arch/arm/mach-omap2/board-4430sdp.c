@@ -1122,6 +1122,8 @@ static struct omap_dss_device sdp4430_hdmi_device = {
 		},
 	},
 	.hpd_gpio = HDMI_GPIO_HPD,
+	.platform_enable = sdp4430_panel_enable_hdmi,
+	.platform_disable = sdp4430_panel_disable_hdmi,
 	.channel = OMAP_DSS_CHANNEL_DIGIT,
 };
 
