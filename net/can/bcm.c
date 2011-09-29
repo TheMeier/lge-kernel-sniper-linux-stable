@@ -376,8 +376,6 @@ static void bcm_tx_timeout_tsklet(unsigned long data)
 
 			bcm_send_to_user(op, &msg_head, NULL, 0);
 		}
-
-		/* send (next) frame */
 		bcm_can_tx(op);
 
 	} else if (op->kt_ival2.tv64)
@@ -967,34 +965,16 @@ static int bcm_tx_setup(struct bcm_msg_head *msg_head, struct msghdr *msg,
 		hrtimer_cancel(&op->timer);
 		/* spec: send can_frame when starting timer */
 		op->flags |= TX_ANNOUNCE;
-<<<<<<< HEAD
-=======
-
-		/* only start timer when having more frames than sent below */
-		if (op->kt_ival1.tv64 && (op->count > 1)) {
-			/* op->count-- is done in bcm_tx_timeout_tsklet */
-			hrtimer_start(&op->timer, op->kt_ival1,
-				      HRTIMER_MODE_REL);
-		} else
-			hrtimer_start(&op->timer, op->kt_ival2,
-				      HRTIMER_MODE_REL);
->>>>>>> 92dc979... can bcm: fix tx_setup off-by-one errors
 	}
 
 	if (op->flags & TX_ANNOUNCE) {
 		bcm_can_tx(op);
-<<<<<<< HEAD
 		if (op->count)
 			op->count--;
 	}
 
 	if (op->flags & STARTTIMER)
 		bcm_tx_start_timer(op);
-=======
-		if (op->kt_ival1.tv64 && (op->count > 0))
-			op->count--;
-	}
->>>>>>> 92dc979... can bcm: fix tx_setup off-by-one errors
 
 	return msg_head->nframes * CFSIZ + MHSIZ;
 }
