@@ -966,10 +966,7 @@ radeon_dvi_detect(struct drm_connector *connector, bool force)
 	    (connector->connector_type == DRM_MODE_CONNECTOR_HDMIA))
 		goto out;
 
-<<<<<<< HEAD
 	/* if we aren't forcing don't do destructive polling */
-=======
->>>>>>> c271809... drm/radeon/kms: bail early in dvi_detect for digital only connectors
 	if (!force) {
 		/* only return the previous status if we last
 		 * detected a monitor via load.
