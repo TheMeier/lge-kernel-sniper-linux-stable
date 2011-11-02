@@ -108,8 +108,6 @@ static inline void get_head_page_multiple(struct page *page, int nr)
 	SetPageReferenced(page);
 }
 
-<<<<<<< HEAD
-=======
 static inline void get_huge_page_tail(struct page *page)
 {
 	/*
@@ -121,7 +119,6 @@ static inline void get_huge_page_tail(struct page *page)
 	atomic_inc(&page->_mapcount);
 }
 
->>>>>>> 68fe9d9... mm: thp: tail page refcounting fix
 static noinline int gup_huge_pmd(pmd_t pmd, unsigned long addr,
 		unsigned long end, int write, struct page **pages, int *nr)
 {
