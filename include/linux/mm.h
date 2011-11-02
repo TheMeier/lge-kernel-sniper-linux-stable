@@ -375,6 +375,7 @@ static inline int page_count(struct page *page)
 	return atomic_read(&compound_head(page)->_count);
 }
 
+<<<<<<< HEAD
 static inline void get_huge_page_tail(struct page *page)
 {
 	/*
@@ -386,6 +387,8 @@ static inline void get_huge_page_tail(struct page *page)
 	atomic_inc(&page->_mapcount);
 }
 
+=======
+>>>>>>> 68fe9d9... mm: thp: tail page refcounting fix
 extern bool __get_page_tail(struct page *page);
 
 static inline void get_page(struct page *page)
