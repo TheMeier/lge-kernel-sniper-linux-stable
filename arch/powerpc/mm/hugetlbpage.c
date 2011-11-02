@@ -443,6 +443,10 @@ static noinline int gup_hugepte(pte_t *ptep, unsigned long sz, unsigned long add
 		if (PageTail(tail))
 			get_huge_page_tail(tail);
 		tail++;
+		while (*nr) {
+			put_page(head);
+			(*nr)--;
+		}
 	}
 
 	return 1;
