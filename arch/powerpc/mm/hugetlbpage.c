@@ -445,8 +445,6 @@ static noinline int gup_hugepte(pte_t *ptep, unsigned long sz, unsigned long add
 		tail++;
 		while (*nr) {
 			put_page(head);
-			(*nr)--;
-		}
 	}
 
 	return 1;
