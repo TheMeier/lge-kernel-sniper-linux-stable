@@ -83,6 +83,8 @@
 #define OMAP4_TOUCH_IRQ_2		36
 #define HDMI_GPIO_CT_CP_HPD		60
 #define HDMI_GPIO_HPD			63  /* Hot plug pin for HDMI */
+#define OMAP4_SFH7741_SENSOR_OUTPUT_GPIO	184
+#define OMAP4_SFH7741_ENABLE_GPIO		188
 #define HDMI_GPIO_LS_OE 41 /* Level shifter for HDMI */
 #define LCD_BL_GPIO		27	/* LCD Backlight GPIO */
 /* PWM2 and TOGGLE3 register offsets */
@@ -1048,6 +1050,10 @@ static void sdp4430_hdmi_mux_init(void)
 	/* strong pullup on DDC lines using unpublished register */
 	r = ((1 << 24) | (1 << 28)) ;
 	omap4_ctrl_pad_writel(r, OMAP4_CTRL_MODULE_PAD_CORE_CONTROL_I2C_1);
+static struct gpio sdp4430_hdmi_gpios[] = {
+	{ HDMI_GPIO_CT_CP_HPD, GPIOF_OUT_INIT_HIGH, "hdmi_gpio_ct_cp_hpd" },
+	{ HDMI_GPIO_LS_OE,	GPIOF_OUT_INIT_HIGH,	"hdmi_gpio_ls_oe" },
+};
 
 	gpio_request(HDMI_GPIO_HPD, NULL);
 	omap_mux_init_gpio(HDMI_GPIO_HPD, OMAP_PIN_INPUT | OMAP_PULL_ENA);
