@@ -2223,14 +2223,7 @@ unknown_cmnd:
 		common->data_size_from_cmnd = 0;
 		sprintf(unknown, "Unknown x%02x", common->cmnd[0]);
 		reply = check_command(common, common->cmnd_size,
-/* Vanilla kernel : storage gadgets send wrong error code for unknown commands
-  * http://git.kernel.org/?p=linux/kernel/git/stable/linux-stable.git;a=commit;
-  * h=06200304e7eb237015f433bd8884975e93aba1f5 */
-#if defined(CONFIG_LGE_ANDROID_USB)
 					  DATA_DIR_UNKNOWN, ~0, 0, unknown);
-#else
-				      DATA_DIR_UNKNOWN, 0xff, 0, unknown);
-#endif
 		if (reply == 0) {
 			common->curlun->sense_data = SS_INVALID_COMMAND;
 			reply = -EINVAL;
