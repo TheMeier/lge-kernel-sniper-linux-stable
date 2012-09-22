@@ -1071,8 +1071,6 @@ static void bd2802_early_suspend(struct early_suspend *h)
 	cancel_work_sync(&led->ledmin_work);
 	// dajin.kim@lge.com - add cancel_work_sync [End]
 
-	led->led_resumed=0;
-
 	bd2802_bl_suspend(led->client, PMSG_SUSPEND);
 	led->led_resumed=0;
 
