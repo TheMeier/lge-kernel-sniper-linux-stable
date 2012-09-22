@@ -113,9 +113,6 @@ enum key_leds {
 extern void touchkey_pressed(enum key_leds id);
 
 static int init_stabled = -1;
-//--[[ LGE_UBIQUIX_MODIFIED_START : shyun@ubiquix.com [2012.03.20] - TBD
-static int lcd_off_boot = 0;
-//--]] LGE_UBIQUIX_MODIFIED_END : shyun@ubiquix.com [2012.03.20]- TBD
 
 #ifdef CONFIG_HAS_EARLYSUSPEND
 static void synaptics_ts_early_suspend(struct early_suspend *h);
